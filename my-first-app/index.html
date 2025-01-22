@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>待办清单</title>
+    <style>
+        body { max-width: 500px; margin: 20px auto; padding: 20px; }
+        input { width: 70%; padding: 8px; }
+        button { padding: 8px 15px; }
+        li { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>我的待办事项</h1>
+    <input type="text" id="taskInput" placeholder="输入新任务">
+    <button onclick="addTask()">添加</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const task = input.value.trim();
+            
+            if (task) {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${task}
+                    <button onclick="this.parentElement.remove()">删除</button>
+                `;
+                document.getElementById('taskList').appendChild(li);
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
